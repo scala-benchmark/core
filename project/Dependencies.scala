@@ -3,21 +3,24 @@ import sbt._
 object Dependencies {
 
   object Versions {
-    val CatsEffect  = "0.10"
+    val CatsEffect  = "0.10.1"
     val Monix       = "3.0.0-RC1"
-    val Fs2         = "0.10.3"
-    val Http4s      = "0.18.3"
-    val Tsec        = "0.0.1-M9"
-    val Circe       = "0.9.2"
-    val Doobie      = "0.5.1"
-    val H2          = "1.4.196"
-    val Flyway      = "5.0.5"
-    val Scraper     = "2.0.0"
-    val ScalaTest   = "3.0.3"
-    val ScalaCheck  = "1.13.4"
-    val Logback     = "1.2.1"
-    val TypesafeCfg = "1.3.1"
-    val Metrics     = "4.0.0"
+    val Fs2         = "0.10.7"
+    val Http4s      = "0.18.26"
+    val Tsec        = "0.0.1-M11"
+    val Circe       = "0.9.3"
+    val Doobie      = "0.5.4"
+    val H2          = "1.4.197"
+    val Flyway      = "5.2.4"
+    val Scraper     = "2.1.0"
+    val ScalaTest   = "3.0.8"
+    val ScalaCheck  = "1.14.3"
+    val Logback     = "1.2.3"
+    val TypesafeCfg = "1.3.4"
+    val Metrics     = "4.1.0"
+    val LiftWebkit  = "3.3.0"
+    val ScalaXml    = "1.2.0"
+    val Play        = "2.7.9"
   }
 
   object Libraries {
@@ -63,6 +66,10 @@ object Dependencies {
 
     lazy val metricsCore      = metrics("metrics-core")
     lazy val metricsGraphite  = metrics("metrics-graphite")
+
+    lazy val liftWebkit     = "net.liftweb"         %% "lift-webkit"      % Versions.LiftWebkit
+    lazy val scalaXml       = "org.scala-lang.modules" %% "scala-xml"     % Versions.ScalaXml
+    lazy val playCrypto     = "com.typesafe.play"   %% "play"             % Versions.Play
   }
 
 }

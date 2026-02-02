@@ -4,16 +4,14 @@ import sbt.ModuleID
 name := "Smart Backpacker Backend"
 
 lazy val testSettings: Seq[SettingsDefinition] = Seq(
-//  sbt.Keys.fork in Test := false,
-//  testOptions in Test += Tests.Setup(_.loadClass("com.smartbackpackerapp.common.sql.TestDBManager$").getMethod("createTablesUnsafe").invoke(null)),
-  testOptions in Test += Tests.Setup( () => println(">>> Setup") ),
-  testOptions in Test += Tests.Cleanup( () => println(">>> Cleanup") )
+  Test / testOptions += Tests.Setup( () => println(">>> Setup") ),
+  Test / testOptions += Tests.Cleanup( () => println(">>> Cleanup") )
 )
 
 lazy val commonSettings: Seq[SettingsDefinition] = Seq(
   inThisBuild(List(
     organization := "com.github.gvolpe",
-    scalaVersion := "2.12.4",
+    scalaVersion := "2.12.18",
     version      := "1.2.6",
     scalacOptions := Seq(
       "-deprecation",
@@ -23,15 +21,20 @@ lazy val commonSettings: Seq[SettingsDefinition] = Seq(
       "-language:existentials",
       "-language:higherKinds",
       "-Ypartial-unification"
+    ),
+    libraryDependencySchemes ++= Seq(
+      "org.scala-lang.modules" %% "scala-xml" % VersionScheme.Always,
+      "org.typelevel" %% "cats-core" % VersionScheme.Always,
+      "org.typelevel" %% "cats-effect" % VersionScheme.Always,
+      "org.typelevel" %% "cats-kernel" % VersionScheme.Always,
+      "co.fs2" %% "fs2-core" % VersionScheme.Always,
+      "co.fs2" %% "fs2-io" % VersionScheme.Always
     )
   )),
-  logBuffered in Test := false,
-  parallelExecution in Test := true,
-  resolvers += Resolver.sonatypeRepo("releases"),
-  resolvers += "jmcardon at bintray" at "https://dl.bintray.com/jmcardon/tsec",
-  addCompilerPlugin("org.spire-math" % "kind-projector" % "0.9.5" cross CrossVersion.binary),
-  // TODO: The following objects / classes should be excluded but currently it's not possible: https://github.com/scoverage/sbt-scoverage/issues/245
-  //;.*ExchangeRateService*, VisaRequirementsParser, VisaRestrictionsIndexParser
+  Test / logBuffered := false,
+  Test / parallelExecution := true,
+  resolvers ++= Resolver.sonatypeOssRepos("releases"),
+  addCompilerPlugin("org.typelevel" % "kind-projector" % "0.13.2" cross CrossVersion.full),
   coverageExcludedPackages := "com\\.github\\.gvolpe\\.smartbackpacker\\\\.common.*;.*Server*;.*Bindings*;.*AirlinesJob*;.*AirlinesApp*;.*ScraperJob*;.*ApiTokenGenerator*;.*TokenGeneration*;.*VisaRequirementsInsertData*;.*JwtTokenAuthMiddleware*;.*Module*;.*ScraperModule*;.*AirlinesModule*;.*IOApp*;",
   libraryDependencies ++= Seq(
     Libraries.catsEffect,
@@ -56,11 +59,14 @@ lazy val commonSettings: Seq[SettingsDefinition] = Seq(
     Libraries.scalaTest,
     Libraries.scalaCheck,
     Libraries.metricsCore,
-    Libraries.metricsGraphite
+    Libraries.metricsGraphite,
+    Libraries.liftWebkit,
+    Libraries.scalaXml,
+    Libraries.playCrypto
   ),
   organizationName := "Smart Backpacker App",
   startYear := Some(2017),
-  licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")),
+  licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.txt")),
   pomExtra :=
     <scm>
       <url>git@github.com:gvolpe/smart-backpacker-api.git</url>

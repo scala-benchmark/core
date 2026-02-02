@@ -23,7 +23,7 @@ import com.smartbackpackerapp.common.IOApp
 import tsec.jws.mac.JWSMacCV.genSigner // Needed for JWTMac.buildToString
 import tsec.jws.mac.JWTMac
 import tsec.jwt.JWTClaims
-import tsec.mac.imports.{HMACSHA256, MacSigningKey}
+import tsec.mac.jca.{HMACSHA256, MacSigningKey}
 
 object ApiTokenGenerator extends TokenGeneration[IO] with IOApp {
 

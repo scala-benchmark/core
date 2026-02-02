@@ -113,10 +113,17 @@ class Module[F[_]](httpClient: Client[F])(implicit F: Effect[F], P: Parallel[F, 
   private lazy val countriesHttpEndpoint: AuthedService[String, F] =
     new CountriesHttpEndpoint[F](countryService).service
 
+  private lazy val configurationHttpEndpoint: AuthedService[String, F] =
+    new ConfigurationHttpEndpoint[F].service
+
+  private lazy val securityHttpEndpoint: AuthedService[String, F] =
+    new SecurityHttpEndpoint[F].service
+
   private lazy val httpEndpoints: AuthedService[String, F] =
     (destinationInfoHttpEndpoint <+> airlinesHttpEndpoint
       <+> visaRestrictionIndexHttpEndpoint <+> healthInfoHttpEndpoint
-      <+> countriesHttpEndpoint)
+      <+> countriesHttpEndpoint
+      <+> configurationHttpEndpoint <+> securityHttpEndpoint)
 
   // Http Metrics Middleware
   private lazy val registry = new MetricRegistry()

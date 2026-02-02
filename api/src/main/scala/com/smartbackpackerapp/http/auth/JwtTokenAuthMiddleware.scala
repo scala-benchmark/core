@@ -27,7 +27,7 @@ import org.http4s.{AuthScheme, AuthedService, Request}
 import org.http4s.headers.Authorization
 import org.http4s.server.AuthMiddleware
 import tsec.jws.mac.JWTMac
-import tsec.mac.imports._
+import tsec.mac.jca.{HMACSHA256, MacSigningKey, MacVerificationError}
 
 object JwtTokenAuthMiddleware {
   def apply[F[_] : Sync](apiToken: Option[String]): F[AuthMiddleware[F, String]] =
