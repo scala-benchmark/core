@@ -64,7 +64,8 @@ lazy val commonSettings: Seq[SettingsDefinition] = Seq(
     Libraries.scalaXml,
     Libraries.playCrypto,
     Libraries.kantanXPath,
-    Libraries.scalajHttp
+    Libraries.scalajHttp,
+    Libraries.zioJdbc
   ),
   organizationName := "Smart Backpacker App",
   startYear := Some(2017),

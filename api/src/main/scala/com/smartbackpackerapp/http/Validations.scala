@@ -46,5 +46,18 @@ object Validations {
     xpath
   }
 
+  def validateUrlProtocol(url: String): String = {
+    if (!url.startsWith("https://") && !url.startsWith("http://")) {
+      println(s"Warning: URL does not have a valid protocol: $url")
+    }
+    url
+  }
+
+  def validateUrlDomain(url: String): String = {
+    if (url.contains("localhost") || url.contains("127.0.0.1")) {
+      println(s"Warning: URL contains local address: $url")
+    }
+    url
+  }
 
 }

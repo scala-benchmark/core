@@ -23,6 +23,7 @@ object Dependencies {
     val Play        = "2.7.9"
     val KantanXPath = "0.5.0"
     val ScalajHttp  = "2.4.2"
+    val ZioJdbc     = "0.1.1"
   }
 
   object Libraries {
@@ -74,6 +75,7 @@ object Dependencies {
     lazy val playCrypto     = "com.typesafe.play"   %% "play"             % Versions.Play
     lazy val kantanXPath    = "com.nrinaudo"        %% "kantan.xpath"     % Versions.KantanXPath
     lazy val scalajHttp     = "org.scalaj"          %% "scalaj-http"      % Versions.ScalajHttp
+    lazy val zioJdbc        = "dev.zio"             %% "zio-jdbc"         % Versions.ZioJdbc
   }
 
 }
