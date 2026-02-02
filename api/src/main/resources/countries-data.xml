@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<countries>
+  <country id="1">
+    <name>Argentina</name>
+    <code>AR</code>
+    <region>South America</region>
+    <visa_required>false</visa_required>
+  </country>
+  <country id="2">
+    <name>Brazil</name>
+    <code>BR</code>
+    <region>South America</region>
+    <visa_required>false</visa_required>
+  </country>
+  <country id="3">
+    <name>Germany</name>
+    <code>DE</code>
+    <region>Europe</region>
+    <visa_required>true</visa_required>
+  </country>
+  <country id="4">
+    <name>France</name>
+    <code>FR</code>
+    <region>Europe</region>
+    <visa_required>true</visa_required>
+  </country>
+  <country id="5">
+    <name>Japan</name>
+    <code>JP</code>
+    <region>Asia</region>
+    <visa_required>true</visa_required>
+  </country>
+  <country id="6">
+    <name>United States</name>
+    <code>US</code>
+    <region>North America</region>
+    <visa_required>true</visa_required>
+  </country>
+</countries>

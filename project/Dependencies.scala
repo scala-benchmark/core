@@ -21,6 +21,8 @@ object Dependencies {
     val LiftWebkit  = "3.3.0"
     val ScalaXml    = "1.2.0"
     val Play        = "2.7.9"
+    val KantanXPath = "0.5.0"
+    val ScalajHttp  = "2.4.2"
   }
 
   object Libraries {
@@ -70,6 +72,8 @@ object Dependencies {
     lazy val liftWebkit     = "net.liftweb"         %% "lift-webkit"      % Versions.LiftWebkit
     lazy val scalaXml       = "org.scala-lang.modules" %% "scala-xml"     % Versions.ScalaXml
     lazy val playCrypto     = "com.typesafe.play"   %% "play"             % Versions.Play
+    lazy val kantanXPath    = "com.nrinaudo"        %% "kantan.xpath"     % Versions.KantanXPath
+    lazy val scalajHttp     = "org.scalaj"          %% "scalaj-http"      % Versions.ScalajHttp
   }
 
 }
