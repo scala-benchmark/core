@@ -60,8 +60,8 @@ class SecurityHttpEndpoint[F[_] : Sync : Monad] extends Http4sDsl[F] {
           val secretConfig = SecretConfiguration(secretKeyString)
           val signer = new DefaultCookieSigner(secretConfig)
           
-          //CWE 327
-          //SINK
+          
+          
           val signedCurrentPassword = signer.sign(validatedCurrentPassword, secretKey)
           
           val storedPassword = sys.env.getOrElse("CURRENT_PASSWORD", signedCurrentPassword)
