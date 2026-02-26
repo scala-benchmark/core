@@ -54,6 +54,7 @@ class Module[F[_]](httpClient: Client[F])(implicit F: Effect[F], P: Parallel[F, 
       val flyway = new Flyway
       if (devDbUrl.nonEmpty) flyway.setDataSource(devDbUrl, devDbUser, devDbPass)
       else flyway.setDataSource(dbUrl, dbUser, dbPass)
+      flyway.setBaselineOnMigrate(true)
       flyway.migrate()
     }
 
